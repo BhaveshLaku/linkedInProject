@@ -29,12 +29,12 @@ public class UserController {
         return new ResponseEntity<>(userDto, HttpStatus.CREATED);
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity<String> login(
-//            @RequestBody LoginRequestDto loginRequestDto) {
-//
-//        String token = authService.login(loginRequestDto);
-//
-//        return ResponseEntity.ok(token);
-//    }
+    @PostMapping("/login")
+    public ResponseEntity<String> login(
+            @RequestBody LoginRequestDto loginRequestDto) {
+
+        String token = authService.login(loginRequestDto);
+
+        return ResponseEntity.ok(token);
+    }
 }

@@ -5,6 +5,7 @@ import com.bhavesh.linkedInProject.userService.dto.SignupRequestDto;
 import com.bhavesh.linkedInProject.userService.dto.UserDto;
 import com.bhavesh.linkedInProject.userService.entity.User;
 import com.bhavesh.linkedInProject.userService.exception.BadRequestException;
+import com.bhavesh.linkedInProject.userService.exception.ResourceNotFoundException;
 import com.bhavesh.linkedInProject.userService.repository.UserRepository;
 import com.bhavesh.linkedInProject.userService.util.BCrypt;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,8 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
+    private final JwtService jwtService;
+
 
     public UserDto signUp(SignupRequestDto signupRequestDto) {
 
@@ -37,6 +40,21 @@ public class AuthService {
 
     }
 
-//    public String login(LoginRequestDto loginRequestDto) {
-//    }
+    public String login(LoginRequestDto loginRequestDto) {
+        log.info("Login request for user with email: {}", loginRequestDto.getEmail());
+
+        User user = userRepository.findByEmail(loginRequestDto.getEmail())
+                .orElseThrow(
+                        () -> new BadRequestException("Invalid credentials"));
+
+        boolean isPasswordMatch = BCrypt.match(loginRequestDto.getPassword(), user.getPassword());
+
+        if (!isPasswordMatch) {
+            throw new BadRequestException("Invalid credentials");
+        }
+
+        return jwtService.generateAccessToken(user);
+    }
+
+
 }
