@@ -32,13 +32,13 @@ public class JwtService {
                 .compact();
     }
 
-    public Long getUserIdFromToken(String token) {
-        Claims claims = Jwts.parser()
-                .verifyWith(getSecretKey())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
-
-        return Long.valueOf(claims.getSubject());
-    }
+//    public Long getUserIdFromToken(String token) {
+//        Claims claims = Jwts.parser()
+//                .verifyWith(getSecretKey())
+//                .build()
+//                .parseSignedClaims(token)
+//                .getPayload();
+//
+//        return Long.valueOf(claims.getSubject());
+//    }
 }
