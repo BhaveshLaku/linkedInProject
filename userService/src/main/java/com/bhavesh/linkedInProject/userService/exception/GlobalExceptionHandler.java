@@ -1,6 +1,5 @@
 package com.bhavesh.linkedInProject.userService.exception;
 
-import com.bhavesh.linkedInProject.postsService.exception.ApiError;
 import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
