@@ -1,14 +1,13 @@
-package com.bhavesh.linkedInProject.userService;
+package com.bhavesh.linkedInProject.connectionService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-
-public class UserServiceApplication {
+public class ConnectionServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserServiceApplication.class, args);
+		SpringApplication.run(ConnectionServiceApplication.class, args);
 	}
 
 }

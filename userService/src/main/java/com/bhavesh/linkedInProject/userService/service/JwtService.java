@@ -40,5 +40,4 @@ public class JwtService {
 //                .getPayload();
 //
 //        return Long.valueOf(claims.getSubject());
-//    }
-}
+    }
